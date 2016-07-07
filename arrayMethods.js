@@ -70,7 +70,13 @@ console.assert(squares[3] === 16)
 
 function filter(array, callback){
     // YOUR CODE HERE
-    return array.filter(callback)
+    var newAry
+    for (var i = 0; i < array.length; i++){
+        if(callback(array[i])){
+            newAry.push(array[i])
+        }
+    }
+    return newAry
 }
 
 // tests
@@ -94,6 +100,13 @@ var people = [
 
 people.sort(function(a, b){
     // YOUR CODE HERE
+    if(a.name>b.name){
+        return 1
+    }
+        if(a.name<b.name){
+        return -1
+    }
+
 })
 
 // tests
@@ -118,14 +131,28 @@ var customers = [
 ]
 
 var results = customers
-    .filter(function(){
+    .filter(function(value){
         // YOUR CODE HERE
+        return value.first[0] === 'J'
+
     })
-    .map(function(){
+
+    .map(function(object){
         // YOUR CODE HERE
+        object.fullname = object.first + " " + object.last
+        return object
+
     })
-    .sort(function(){
+
+    .sort(function(a,b){
         // YOUR CODE HERE
+        if(a.fullname>b.fullname){
+            return 1
+        }
+        if(a.fullname<b.fullname){
+            return -1
+        }
+
     })
 
 // tests
